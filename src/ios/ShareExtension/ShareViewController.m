@@ -229,7 +229,7 @@
         if (item != nil) {
           [self debug:[NSString stringWithFormat:@"NSURL action, probably from something except iOS Mail"]];
 
-          //NSData *data = [NSData dataWithContentsOfURL:(NSURL*)item];
+          NSData *data = [NSData dataWithContentsOfURL:(NSURL*)item];
           //NSString *base64 = [data convertToBase64];
           NSString *suggestedName = item.lastPathComponent;
           //NSLog(@"data = %@", data);
@@ -245,7 +245,7 @@
           NSString *mimeType =  [self mimeTypeFromUti:registeredType];
           NSDictionary *dict = @{
                                  @"text" : self.contentText,
-                                 @"data" : item.absoluteString,
+                                 @"data" : data,
                                  // @"base64" : base64,
                                  @"uti"  : uti,
                                  @"utis" : itemProvider.registeredTypeIdentifiers,
