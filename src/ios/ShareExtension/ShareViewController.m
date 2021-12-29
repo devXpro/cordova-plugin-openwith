@@ -191,7 +191,7 @@
            if (urlItem != nil) {
              [self debug:[NSString stringWithFormat:@"kUTTypeURL action, probably from iOS Mail"]];
 
-             //NSData *data = [NSData dataWithContentsOfURL:(NSURL*)urlItem];
+             NSData *data = [NSData dataWithContentsOfURL:(NSURL*)urlItem];
              //NSString *base64 = [data convertToBase64];
              NSString *suggestedName = urlItem.lastPathComponent;
              NSString *uti = itemProvider.registeredTypeIdentifiers[0];
@@ -206,7 +206,7 @@
              NSString *mimeType =  [self mimeTypeFromUti:registeredType];
              NSDictionary *dict = @{
                                     @"text" : self.contentText,
-                                    @"data" : urlItem.absoluteString,
+                                    @"data" : data,
                                     //@"base64" : base64,
                                     @"uti"  : uti,
                                     @"utis" : itemProvider.registeredTypeIdentifiers,
